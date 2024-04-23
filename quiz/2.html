@@ -1,0 +1,53 @@
+<!doctype HTML>
+<html>
+	<head>
+		<title>Lesson 2 Quiz: Multithreading in Java Basics</title>
+		<meta charset=UTF-8>
+		<link rel='stylesheet' href='../assets/style.css'>
+		<script src='https://code.jquery.com/jquery-3.7.1.min.js'></script>
+		<script src='../assets/nav.js'></script>
+		<script src='../assets/lessons.js'></script>
+		<script src='../assets/quiz.js'></script>
+		<script>
+			$(() => {
+				Nav.gen('../');
+				$('.lessons').append(Lessons.genHTMLList('../', 1));
+				Quiz.create(2, [
+					{
+						q: 'Which of the following is a way to create a thread in Java?',
+						t: Quiz.MultipleChoice,
+						a: 0,
+						o: ['Extending the Thread class', 'Using the ThreadFactory interface', 'Calling the Thread.start() method directly']
+					},
+					{
+						q: 'What is the main advantage of implementing the Runnable interface over extending the Thread class?',
+						t: Quiz.MultipleChoice,
+						a: 1,
+                        o: ['It allows for multiple inheritance.', 'It allows a class to extend another class as well as create a thread.', 'It simplifies the code needed to create a thread.']
+					},
+					{
+						q: 'What problem does multithreading introduce that requires careful management?',
+						t: Quiz.MultipleChoice,
+						a: 2,
+                        o: ['Increased memory usage', 'Simpler code execution', 'Concurrency issues such as race conditions']
+					}
+				]);
+			});
+		</script>
+	</head>
+	<body>
+		<nav class='navbar'></nav>
+		<br>
+		<div class='main'>
+			<div class='flex lessons right-bar'></div>
+			<div>
+				<h1>Lesson 2: Multithreading in Java Basics - Quiz</h1>
+				<div class='quiz'></div>
+				<hr>
+				<div class='return-link'>
+					<a href='../lesson/2.html'>Back to the lesson</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

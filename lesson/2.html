@@ -1,0 +1,86 @@
+<!doctype HTML>
+<html>
+	<head>
+		<title>Lesson 2: Multithreading in Java Basics</title>
+		<meta charset=UTF-8>
+		<link rel='stylesheet' href='../assets/style.css'>
+		<script src='https://code.jquery.com/jquery-3.7.1.min.js'></script>
+		<script src='../assets/nav.js'></script>
+		<script src='../assets/lessons.js'></script>
+		<script>
+			$(() => {
+				Nav.gen('../');
+				$('.lessons').append(Lessons.genHTMLList('../', 2 - 1));
+			});
+		</script>
+	</head>
+	<body>
+		<nav class='navbar'></nav>
+		<br>
+		<div class='main'>
+			<div class='flex lessons right-bar'></div>
+			<div>
+				<div class='video-container'>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/hXsPfc65Wt4" title="YouTube Video: Threads in Java" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				</div>
+				<h1>Creating and Using Threads in Java</h1>
+				<div class='written'>
+					<p>In the previous lesson, you have learned about Multithreading and the difference between processes and threads. In this lesson, we will cover how to create and use Threads in Java.</p>
+					<p>There are two ways to create a Thread in Java:</p>
+					<ul>
+						<li>Extending the Thread class</li>
+						<li>Implementing the Runnable interface</li>
+					</ul>
+					<h2>Extending the Thread Class</h2>
+					<p>Let’s consider an example below when extending the Thread class.</p>
+					<pre><code>public class MyThread extends Thread {
+    // We write this method in order to start the thread
+    public void run() {
+        System.out.println("Thread Started Running!");
+    }
+    public static void main(String[] args) {
+        MyThread thread = new MyThread();
+
+        // Starting the thread
+        thread.start();
+    }
+}</code></pre>
+					<p><strong>Output:</strong></p>
+					<pre>Thread Started Running!</pre>
+					<p><strong>Explanation:</strong></p>
+					<p>In the code snippet above, we extend the Thread class which is contained in the built-in java.lang package. We create a run() method for the Thread to start executing desired tasks, and then we invoke the Thread by instantiating the Thread object and calling the start() method on this object.</p>
+					<p><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html">Java Thread class documentation</a></p>
+					<h2>Implementing the Runnable Interface</h2>
+					<p>An alternative way to create a Thread is to implement the Java Runnable interface. Consider the following example.</p>
+					<pre><code>public class MyThread2 implements Runnable {
+    // Required to implement this method to start the Thread
+    public void run() {
+        System.out.println(
+                "Thread created by implementing Runnable is running!");
+    }
+
+    public static void main(String[] args) {
+        MyThread2 thread = new MyThread2();
+        // creating the Thread Object
+        Thread t1 = new Thread(thread);
+        t1.start();
+    }
+}</code></pre>
+					<p><strong>Output</strong></p>
+					<pre>Thread created by implementing Runnable is running!</pre>
+					<p><strong>Explanation</strong></p>
+					<p>Instead of extending the Thread class, we implement the Runnable interface. Similarly, we define a run method inside the MyThread2 class. During initialization, we first instantiate the custom thread MyThread2 we created into the ‘thread’ variable and then use the built-in Thread class constructor in which we pass in the ‘thread’ variable to create a Thread. Finally, we run it as in the previous example using the Thread class ‘start’ method.</p>
+					<p><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Runnable.html">Java Runnable interface documentation</a></p>
+					<h2>Comparing Two Ways to Create a Thread</h2>
+					<p>"When a class extends the Thread class, it can't extend any other class due to Java's single inheritance limitation. However, by implementing the Runnable interface, it's possible to extend from another class as well. For example, you can have a class like MyClass that extends another class (e.g., OtherClass) and implements the Runnable interface: class MyClass extends OtherClass implements Runnable."</p>
+					<p>Concurrency problem? - Lack of knowledge in which order the code will run.</p>
+					<p>One of the challenges with multithreading is the unpredictability of the execution order of threads. This is known as a concurrency problem. Without proper management, it can lead to issues such as race conditions, where multiple threads try to modify the same resource simultaneously, leading to unpredictable outcomes.</p>
+				</div>
+			</div>
+            <hr>
+            <div class='quiz-link'>
+                <a href='../quiz/2.html'>Take this quiz to complete the lesson!</a>
+            </div>
+		</div>
+	</body>
+</html>

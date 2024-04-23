@@ -1,0 +1,65 @@
+<!doctype HTML>
+<html>
+	<head>
+		<title>Lesson 3 Quiz: Thread Lifecycle in Java</title>
+		<meta charset=UTF-8>
+		<link rel='stylesheet' href='../assets/style.css'>
+		<script src='https://code.jquery.com/jquery-3.7.1.min.js'></script>
+		<script src='../assets/nav.js'></script>
+		<script src='../assets/lessons.js'></script>
+		<script src='../assets/quiz.js'></script>
+		<script>
+			$(() => {
+				Nav.gen('../');
+				$('.lessons').append(Lessons.genHTMLList('../', 2));
+				Quiz.create(3, [
+					{
+						q: 'What is the initial state of a thread when it is created but not yet started?',
+						t: Quiz.MultipleChoice,
+						a: 0,
+						o: ['New', 'Runnable', 'Blocked', 'Waiting']
+					},
+					{
+						q: 'Which method transitions a thread from the New state to the Runnable state?',
+						t: Quiz.MultipleChoice,
+						a: 1,
+						o: ['run()', 'start()', 'sleep()', 'join()']
+					},
+					{
+						q: 'What state is a thread in when it is waiting indefinitely for another thread to perform a specific action?',
+						t: Quiz.MultipleChoice,
+						a: 3,
+						o: ['Runnable', 'Blocked', 'Terminated', 'Waiting']
+					},
+					{
+						q: 'Which of the following methods is NOT directly associated with changing the state of a thread?',
+						t: Quiz.MultipleChoice,
+						a: 0,
+						o: ['run()', 'sleep()', 'join()', 'LockSupport.park()']
+					},
+					{
+						q: 'What happens to a thread in the Terminated state?',
+						t: Quiz.MultipleChoice,
+						a: 2,
+						o: ['It is waiting to be started again', 'It returns to the Runnable state', 'It has completed execution or was stopped abruptly', 'It is ready to execute its run() method']
+					}
+				]);
+			});
+		</script>
+	</head>
+	<body>
+		<nav class='navbar'></nav>
+		<br>
+		<div class='main'>
+			<div class='flex lessons right-bar'></div>
+			<div>
+				<h1>Lesson 3: Thread Lifecycle in Java - Quiz</h1>
+				<div class='quiz'></div>
+				<hr>
+				<div class='return-link'>
+					<a href='../lesson/3.html'>Back to the lesson</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

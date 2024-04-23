@@ -1,0 +1,63 @@
+<!doctype HTML>
+<html>
+	<head>
+		<title>Lesson 1: What is Multithreading?</title>
+		<meta charset=UTF-8>
+		<link rel='stylesheet' href='../assets/style.css'>
+		<script src='https://code.jquery.com/jquery-3.7.1.min.js'></script>
+		<script src='../assets/nav.js'></script>
+		<script src='../assets/lessons.js'></script>
+		<script>
+			$(() => {
+				Nav.gen('../');
+				$('.lessons').append(Lessons.genHTMLList('../', 1 - 1));
+			});
+		</script>
+	</head>
+	<body>
+		<nav class='navbar'></nav>
+		<br>
+		<div class='main'>
+			<div class='flex lessons right-bar'></div>
+			<div>
+				<div class='video-container'>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/QHK0j40ousU" title="YouTube Video: Multi-Threading with Java Part One" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				</div>
+				<h1>Welcome to the Multithreading in Java Course</h1>
+				<div class='written'>
+					<p>
+						In this lesson, we are going to introduce the concept of multithreading.
+					</p>
+					<h2>What is Multithreading</h2>
+					<p>
+						Imagine a restaurant kitchen with multiple chefs. One chef may be responsible for cooking meat, another might be washing vegetables, etc. In this situation, each chef is working independently on their own assigned tasks at their own pace. But at the end, they are still working together to cook a dish for the customer.
+					</p>
+					<p>
+						This scenario showcases the main idea of multithreading, where each chef can be seen as an individual thread with its own designated task. Without multithreading, the thread (chef in this case) would have to both cut the meat and wash the vegetables. However, by hiring multiple chefs, we are able to designate each chef with a more specialized task and more importantly, each chef is able to perform their task concurrently with one another.
+					</p>
+					<p>
+						It is important to note here that in this scenario, there could be a lot of other factors that could prevent chefs from doing the same task at the same time. For example, if there are two chefs that need to cut meat, but there is only one knife, one chef must wait for the other to finish first. This is also known as resource contention and these kinds of problems can occur when using multithreading.
+					</p>
+					<h2>Threads vs Processes</h2>
+					<p>
+						Having gone over the high-level concept of multithreading, we want to clarify a very important distinction between what a thread is and what a process is. Both of these concepts are quite similar in nature and can often be confused with one another.
+					</p>
+					<p>
+						Going back to the kitchen scenario, we previously stated that we can think of each chef as an individual thread. In this case, the process would be the restaurant itself. Each chef may work independently of one another, but they still are ultimately working to complete the same task, which is cooking for the customer. Processes, like individual restaurants, work more independently of other restaurants by having their own individual menus, cooking ingredients, and cooking supplies.
+					</p>
+					<p>
+						More formally, a thread is the smallest unit of execution and work within a process. On the other hand, a process is a larger unit of execution with its own resources.
+					</p>
+					<h2>Conclusion</h2>
+					<p>
+						In this lesson, we primarily discussed the concept of multi-threading, what a thread is, and how it differs from a process. Before you advance to the later lessons, make sure you have a solid understanding of the concept of multithreading. In the next few lessons, you dive more into the specifics of multithreading and how to use it in Java.
+					</p>
+				</div>
+				<hr>
+				<div class='quiz-link'>
+					<a href='../quiz/1.html'>Take this quiz to complete the lesson!</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

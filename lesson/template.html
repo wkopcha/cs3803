@@ -1,0 +1,52 @@
+<!doctype HTML>
+<html>
+	<head>
+		<title>LESSON_TITLE</title>
+		<meta charset=UTF-8>
+		<link rel='stylesheet' href='../assets/style.css'>
+		<script src='https://code.jquery.com/jquery-3.7.1.min.js'></script>
+		<script src='../assets/nav.js'></script>
+		<script src='../assets/lessons.js'></script>
+		<script>
+			$(() => {
+				Nav.gen('../');
+				$('.lessons').append(Lessons.genHTMLList('../', LESSON_ID - 1));
+			});
+		</script>
+	</head>
+	<body>
+		<nav class='navbar'></nav>
+		<br>
+		<div class='main'>
+			<div class='flex lessons right-bar'></div>
+			<div>
+				<div class='video-container'>
+					<video controls>
+						<source src='../assets/videos/LESSON_ID.mp4'>
+					</video>
+				</div>
+				<h1>LESSON_TITLE</h1>
+				<div class='written'>
+					<p>
+						This is example lesson content. I should fully be replaced by the time this page is finished.
+					</p>
+					<p>
+						As an example, I am using multiple paragraphs and then a list:
+					</p>
+					<ul>
+						<li>Item 1</li>
+						<li>Item 2</li>
+						<li>Item 3</li>
+					</ul>
+					<p>
+						Nothing too special here, just plain HTML.
+					</p>
+				</div>
+				<hr>
+				<div class='quiz-link'>
+					<a href='../quiz/LESSON_ID.html'>Take this quiz to complete the lesson!</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

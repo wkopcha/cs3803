@@ -1,0 +1,56 @@
+<!doctype HTML>
+<html>
+	<head>
+		<title>Lesson 4: Interthread Communication</title>
+		<meta charset=UTF-8>
+		<link rel='stylesheet' href='../assets/style.css'>
+		<script src='https://code.jquery.com/jquery-3.7.1.min.js'></script>
+		<script src='../assets/nav.js'></script>
+		<script src='../assets/lessons.js'></script>
+		<script>
+			$(() => {
+				Nav.gen('../');
+				$('.lessons').append(Lessons.genHTMLList('../', 4 - 1));
+			});
+		</script>
+	</head>
+	<body>
+		<nav class='navbar'></nav>
+		<br>
+		<div class='main'>
+			<div class='flex lessons right-bar'></div>
+			<div>
+				<div class='video-container'>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/Nw8gJZurkKo" title="YouTube Video: Multi-Threading Lessong Part Four" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				</div>
+				<h1>Understanding Interthread Communication in Java</h1>
+				<div class='written'>
+					<p>
+						In this lesson, our main goal is to gain a great understanding of interthread communication in Java, with a strong focus on synchronized methods and locks. These concepts are <em>crucial</em> for writing safe, fast, concurrent applications where you have tons of threads interacting and sharing resources.
+					</p>
+					<p>
+						Synchronized methods ensure that you can have only a single thread executing a block of code on any object in your codebase at a time. You need this so that your data remains consistent, just imagine if you had ten different threads all making changes to your data at the exact same time! That would be horrible, hence the mutual exclusion here. But that’s also not all synchronization is for. It is also about visibility, whenever you have a thread exit a synchronized block, it makes it so that the changes it made to the shared state are visible to other threads in your program. This is an often-overlooked aspect of synchronization but it makes your application behave predictably when you are in a multithreaded environment.
+					</p>
+					<p>
+						To really get a grasp on this let’s look at a specific example. We’ll take a look at a hypothetical online banking application where users can do two things, they can either make deposits or make withdrawals. If you don’t have synchronization set up correctly, if two threads tried to make transactions on the same account at the same time, it could lead to account balances that are inconsistent. But if you synchronize access to the account’s balance update operations, we would ensure that every single transaction is processed sequentially, which means the account balance is maintained correctly.
+					</p>
+					<p>
+						Locks though offer what synchronization does but in a more flexible approach, this provides more control over locking and unlocking, which allows for more control over the concurrency. Why is this useful you ask? Well if you have a situation where the synchronized keyword leads to a deadlock or like we already mentioned, when you need to have more control over synchronization than the keyword synchronized can offer.
+					</p>
+					<p>
+						To really understand let’s take a look at a specific example. Suppose we have a thread that needs to lock multiple resources. Using the ReentrantLock class, we can have a thread hold several locks at once, which means we are less likely to run into the issue of deadlock. You can then also use the tryLock() method to give an alternative to just waiting indefinitely to get a lock to allow threads to back off and either try again or do something else if the lock is not available.
+					</p>
+					<p>
+						If it’s not obvious already, combining synchronized methods and locks gives you an immensely powerful toolbox for dealing with access to shared resources in a multithread environment. If you do this carefully, you can guarantee that your Java programs are thread-safe, which means that as you chase those efficiency benefits, you won’t be corrupting your data, and you can make sure your data remains consistent across all the different threads you’re running.
+					</p>
+					<p>
+						As we close this lesson out, it is important that you rewatch the lesson if need be to engrain the concepts in your head. We’ve mentioned this in the past few lessons, but the concepts we are covering are essential and foundational if you’re a Java developer looking to use threads. Any misunderstanding of the concepts could lead to concurrency issues, data corruption, and general bugs in your code which isn’t good! That could damage both your reputation and your company.
+                        Again, good luck on the quiz for this lesson and feel free to peruse the external resources if need be. Next up, we’ll be covering the producer consumer problem and just keep going and learning more about multithreading. Make sure to practice these skills so you are prepared for the capstone project.
+					</p>
+				</div>
+                <hr>
+				<a href='../quiz/4.html' class='quiz-link'>Take the quiz for this lesson</a>
+			</div>
+		</div>
+	</body>
+</html>

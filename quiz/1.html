@@ -1,0 +1,47 @@
+<!doctype HTML>
+<html>
+	<head>
+		<title>Lesson 1 Quiz: What is Multithreading?</title>
+		<meta charset=UTF-8>
+		<link rel='stylesheet' href='../assets/style.css'>
+		<script src='https://code.jquery.com/jquery-3.7.1.min.js'></script>
+		<script src='../assets/nav.js'></script>
+		<script src='../assets/lessons.js'></script>
+		<script src='../assets/quiz.js'></script>
+		<script>
+			$(() => {
+				Nav.gen('../');
+				$('.lessons').append(Lessons.genHTMLList('../', 0));
+				Quiz.create(1, [
+					{
+						q: 'Question 1: What problem can arise in a multithreading scenario, similar to chefs working in a kitchen?',
+						t: Quiz.MultipleChoice,
+						a: 3,
+						o: ['Too many chefs in the kitchen', 'Chefs not knowing what to cook', 'Only one chef can work at a time', 'Chefs having to wait for each other due to limited resources (e.g., only one knife)']
+					},
+					{
+						q: 'Question 2: How does a thread differ from a process?',
+						t: Quiz.MultipleChoice,
+						a: 1,
+                        o: ['A thread is a larger unit of execution with its own resources', 'A thread is the smallest unit of execution within a process', 'A thread is a process that is running', 'A thread is a process that is waiting']
+					},
+				]);
+			});
+		</script>
+	</head>
+	<body>
+		<nav class='navbar'></nav>
+		<br>
+		<div class='main'>
+			<div class='flex lessons right-bar'></div>
+			<div>
+				<h1>Lesson 1: What is Multithreading? - Quiz</h1>
+				<div class='quiz'></div>
+				<hr>
+				<div class='return-link'>
+					<a href='../lesson/1.html'>Back to the lesson</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

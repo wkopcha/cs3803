@@ -1,0 +1,68 @@
+<!doctype HTML>
+<html>
+	<head>
+		<title>Lesson 3: Thread Lifecycle in Java</title>
+		<meta charset=UTF-8>
+		<link rel='stylesheet' href='../assets/style.css'>
+		<script src='https://code.jquery.com/jquery-3.7.1.min.js'></script>
+		<script src='../assets/nav.js'></script>
+		<script src='../assets/lessons.js'></script>
+		<script>
+			$(() => {
+				Nav.gen('../');
+				$('.lessons').append(Lessons.genHTMLList('../', 3 - 1));
+			});
+		</script>
+	</head>
+	<body>
+		<nav class='navbar'></nav>
+		<br>
+		<div class='main'>
+			<div class='flex lessons right-bar'></div>
+			<div>
+				<div class='video-container'>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/lfY3SYXAtg4" title="YouTube Video: The Thread Lifecycle" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				</div>
+				<h1>Lesson 3: Thread Lifecycle in Java</h1>
+				<div class='written'>
+					<p>
+						This lesson’s main objective is to cover the thread lifecycle in Java and the relevant methods you’ll need to know to be able to write efficient applications and to get the most out of the multithreading.
+					</p>
+					<p>
+						Every thread in Java has a lifecycle, it has to come to life at some point and at some point it has to go away. There are quite a few states in between. You need to know all of these states and the transitions between them to really master multithreading.
+					</p>
+					<p>
+						Let’s start at the beginning of the lifecycle, the “New” state. This is the origin for your threads as they go through the lifecycle. Whether it is a new instance of the Thread class or an implementation of the Runnable interface, as soon as you do it, your thread is in this state. It’s been born but can’t actually do anything yet. Odd analogy, but you get the point.
+					</p>
+					<p>
+						The thread really comes to life once you call the <code>start()</code> method on the thread, that’s when it transitions to the Runnable state. When in this state, your thread is eligible to run, but it may not get any CPU time allocated to it, as the thread scheduler has not made a decision on when to run your thread yet. So it’s almost doing stuff, but it hasn’t entered that state yet.
+					</p>
+					<p>
+						Another state you may hit or encounter is the Blocked state. When you have a running thread it may end up being blocked because it could be waiting for a monitor lock to enter a block of code that is synchronized, or to re-enter a synchronized block. It’s basically the equivalent of getting caught in traffic, you can’t go anywhere, but it’s not like you’re going to get out of your car and quit.
+					</p>
+					<p>
+						Yet another state you could encounter is the Waiting state. In this state, your thread is waiting for another thread to perform an action without a time limit of any sort. A few common methods that bring your thread to this state, are <code>wait()</code>, <code>join()</code>, and <code>LockSupport.park()</code>. The key difference here is that the thread has a relationship and is waiting on it to complete a task, rather than just being locked out.
+					</p>
+					<p>
+						The final state you could encounter is the Terminated state. This is when your thread completes its execution or is stopped abruptly due to an exception of some sort. It is like the end of the marathon, you’re at the finish line and can just sit down and take a rest.
+					</p>
+					<p>
+						Now that the states themselves are covered, we can talk about a few essential methods you’re going to need to know.
+					</p>
+					<ul>
+						<li>The <code>run()</code> method contains the code executed by your thread. When you call <code>start()</code>, the <code>run()</code> method gets invoked.</li>
+						<li><code>Sleep(long millis)</code> is a static method that causes the currently executing thread to sleep for the specified number of milliseconds, allowing other threads to execute. It's like taking a power nap - you'll be refreshed and ready to go when you wake up.</li>
+	                    <li><code>Join()</code> is a method that allows one thread to wait for the completion of another. If <code>t</code> is a Thread object whose thread is currently executing, then <code>t.join()</code> causes the current thread to pause execution until <code>t</code>'s thread terminates. It's like waiting for your favorite TV show to finish - you'll keep watching until it's over.</li>
+	                </ul>
+					<p>
+						Before you proceed to the next few lessons, make sure you really do understand these states and methods. You should be able to knock out the quiz with no problem, if you struggle a little, check out the external resources page and see if that helps. With enough effort you should be able to gain great intuition. Once you do, you’ll be able to control the flow of your threads and make Java applications more efficient and responsive. In the next lesson, we’ll look at inter-thread communication.
+					</p>
+				</div>
+                <hr>
+				<div class='quiz-link'>
+					<a href='../quiz/3.html'>Take this quiz to complete the lesson!</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

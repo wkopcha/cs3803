@@ -1,0 +1,120 @@
+<!doctype HTML>
+<html>
+	<head>
+		<title>Lesson 5: The Producer-Consumer Problem</title>
+		<meta charset=UTF-8>
+		<link rel='stylesheet' href='../assets/style.css'>
+		<script src='https://code.jquery.com/jquery-3.7.1.min.js'></script>
+		<script src='../assets/nav.js'></script>
+		<script src='../assets/lessons.js'></script>
+		<script>
+			$(() => {
+				Nav.gen('../');
+				$('.lessons').append(Lessons.genHTMLList('../', 5 - 1));
+			});
+		</script>
+	</head>
+	<body>
+		<nav class='navbar'></nav>
+		<br>
+		<div class='main'>
+			<div class='flex lessons right-bar'></div>
+			<div>
+				<div class='video-container'>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/NuIbPdv3gPY" title="YouTube Video: Multi-Threading Lesson Part Five" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				</div>
+				<h1>The Producer-Consumer Problem</h1>
+				<div class='written'>
+					<p>
+						Now that we've delved into the fundamentals of multithreading and explored various synchronization techniques, let's tackle a classic problem in concurrent programming: the Producer-Consumer Problem.
+					</p>
+					<p>
+						Imagine a scenario where you have two threads – a producer and a consumer – that share a common, fixed-size buffer. The producer's job is to generate data and place it into the buffer, while the consumer's job is to consume that data from the buffer. However, they must coordinate their actions to ensure that the producer doesn't try to add data into the buffer if it's already full, and the consumer doesn't try to consume data from an empty buffer.
+					</p>
+					<p>
+						This problem arises in numerous real-world scenarios, such as a print spooler where multiple processes are generating documents to be printed (producers), and a single process is responsible for managing the printer (consumer). Without proper synchronization, the producer might attempt to send a document to be printed when the printer is already busy, or the consumer might try to print a document that hasn't been generated yet.
+					</p>
+					<p>
+						To solve the Producer-Consumer Problem efficiently, we need to employ synchronization techniques like locks or semaphores to coordinate access to the shared buffer. For example, a semaphore can be used to keep track of the number of empty slots in the buffer, allowing the producer to wait if the buffer is full and the consumer to wait if the buffer is empty.
+					</p>
+					<p>
+						By carefully managing access to the buffer using synchronization primitives, we can ensure that the producer and consumer threads work together seamlessly without encountering issues like race conditions or buffer overflows.
+					</p>
+					<p>
+						In this lesson, we wanted to move away from simple quizzes to an actual programming exercise. We aren't leaving you out to dry though, so we have provided some starter code to help you begin to solve the Producer-Consumer Problem.
+					</p>
+					<h2>Example Code Provided to Start Solving the Producer Consumer Problem</h2>
+					<h3>ProducerConsumer.java:</h3>
+					<pre>
+import java.util.LinkedList;
+
+class ProducerConsumer {
+	private LinkedList&lt;Integer&gt; buffer = new LinkedList&lt;&gt;();
+	private int capacity = 10;
+
+	public void produce() throws InterruptedException {
+		int value = 0;
+		while (true) {
+			synchronized (this) {
+				while (buffer.size() == capacity) {
+					wait();
+				}
+				System.out.println("Producer produced: " + value);
+				buffer.add(value++);
+				notify();
+				Thread.sleep(1000); // Sleep for some time to simulate production time
+			}
+		}
+	}
+
+	public void consume() throws InterruptedException {
+		while (true) {
+			synchronized (this) {
+				while (buffer.isEmpty()) {
+					wait();
+				}
+				int consumedValue = buffer.removeFirst();
+				System.out.println("Consumer consumed: " + consumedValue);
+				notify();
+				Thread.sleep(1000); // Sleep for some time to simulate consumption time
+			}
+		}
+	}
+}
+					</pre>
+					<h3>Main.java:</h3>
+					<pre>
+public class Main {
+	public static void main(String[] args) {
+		final ProducerConsumer pc = new ProducerConsumer();
+
+		Thread producerThread = new Thread(() => {
+			try {
+				pc.produce();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		});
+
+		Thread consumerThread = new Thread(() => {
+			try {
+				pc.consume();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		});
+
+		producerThread.start();
+		consumerThread.start();
+	}
+}
+					</pre>
+				</div>
+				<hr>
+				<div class='quiz-link'>
+					<a href='../quiz/5.html'>Take this quiz to complete the lesson!</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

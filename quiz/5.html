@@ -1,0 +1,41 @@
+<!doctype HTML>
+<html>
+	<head>
+		<title>Lesson 5 Quiz: The Producer-Consumer Problem</title>
+		<meta charset=UTF-8>
+		<link rel='stylesheet' href='../assets/style.css'>
+		<script src='https://code.jquery.com/jquery-3.7.1.min.js'></script>
+		<script src='../assets/nav.js'></script>
+		<script src='../assets/lessons.js'></script>
+		<script src='../assets/quiz.js'></script>
+		<script>
+			$(() => {
+				Nav.gen('../');
+				$('.lessons').append(Lessons.genHTMLList('../', 4));
+				Quiz.create(5, [
+					{
+						q: 'Question 1: What do we expect will happen if we are to run the given example code without any modifications?',
+						t: Quiz.MultipleChoice,
+						a: 2,
+						o: ['The producer will produce values before the consumer consumes them', 'The consumer will consume values before the producer produces them', 'We do not know, either possibility can happen', 'None of the above']
+					}
+				]);
+			});
+		</script>
+	</head>
+	<body>
+		<nav class='navbar'></nav>
+		<br>
+		<div class='main'>
+			<div class='flex lessons right-bar'></div>
+			<div>
+				<h1>Lesson 5: The Producer-Consumer Problem - Quiz</h1>
+				<div class='quiz'></div>
+				<hr>
+				<div class='return-link'>
+					<a href='../lesson/5.html'>Back to the lesson</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

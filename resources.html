@@ -1,0 +1,33 @@
+<!doctype HTML>
+<html>
+	<head>
+		<title>Multithreading Resources</title>
+		<meta charset=UTF-8>
+		<link rel='stylesheet' href='./assets/style.css'>
+		<script src='https://code.jquery.com/jquery-3.7.1.min.js'></script>
+		<script src='./assets/nav.js'></script>
+		<script src='./assets/lessons.js'></script>
+		<script>
+			const resources = {
+				'Java Thread Class Documentation': 'https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html',
+				'Java Runnable Interface Documentation': 'https://docs.oracle.com/javase/8/docs/api/java/lang/Runnable.html'
+			};
+
+			$(() => {
+				Nav.gen('./');
+				for(let src in resources)
+					$('.resources').append(`<li><a href='${resources[src]}' target='_tab'>${src}</a></li>`)
+				$('.lessons').append(Lessons.genHTMLList('./', 6));
+			});
+		</script>
+	</head>
+	<body>
+		<nav class='navbar'></nav>
+		<br>
+		<div class='main'>
+			<div class='flex lessons right-bar'></div>
+			<h1>Resources</h1>
+			<div class='resources'></div>
+		</div>
+	</body>
+</html>

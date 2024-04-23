@@ -1,0 +1,52 @@
+<!doctype HTML>
+<html>
+	<head>
+		<title>LESSON_TITLE: Quiz</title>
+		<meta charset=UTF-8>
+		<link rel='stylesheet' href='../../../assets/style.css'>
+		<script src='https://code.jquery.com/jquery-3.7.1.min.js'></script>
+		<script src='../../../assets/nav.js'></script>
+		<script src='../../../assets/lessons.js'></script>
+		<script src='../../../assets/quiz.js'></script>
+		<script>
+			$(() => {
+				Nav.gen('../../../');
+				$('.lessons').append(Lessons.genHTMLList('../../../', LESSON_ID - 1));
+				Quiz.create(LESSON_ID, [
+					{
+						q: 'Question 1',
+						t: Quiz.MultipleChoice,
+						a: 0,
+						o: ['Answer 1', 'Answer 2', 'Answer 3']
+					},
+					{
+						q: 'Question 2',
+						t: Quiz.FillIn,
+						a: 'Answer'
+					},
+					{
+						q: 'Question 3',
+						t: Quiz.DropDown,
+						a: 2,
+						o: ['Answer 1', 'Answer 2', 'Answer 3']
+					}
+				]);
+			});
+		</script>
+	</head>
+	<body>
+		<nav class='navbar'></nav>
+		<br>
+		<div class='main'>
+			<div class='flex lessons right-bar'></div>
+			<div>
+				<h1>LESSON_TITLE: Quiz</h1>
+				<div class='quiz'></div>
+				<hr>
+				<div class='return-link'>
+					<a href='../'>Back to the lesson</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

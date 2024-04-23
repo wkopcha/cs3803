@@ -1,0 +1,122 @@
+:root {
+	--text-color: #000;
+	--link-color: #13d;
+	--link-hover-color: #5af;
+	--bg-primary-color: #fff;
+	--bg-secondary-color: #ddd;
+	--bg-secondary-hover-color: #eee;
+	--box-padding: 1em;
+	--box-border-radius: 0.25em;
+	--complete-lesson-bg-color: #9f9;
+	--complete-lesson-bg-hover-color: #bfb;
+	--current-lesson-bg-color: #9cf;
+	--quiz-correct-color: #5d5;
+	--quiz-incorrect-color: #d22;
+}
+
+body {
+	font-size: 1rem;
+	font-family: sans-serif;
+	color: var(--text-color);
+	background-color: var(--bg-primary-color);
+	margin: 0;
+}
+div.main {
+	padding: 0 5vw;
+	margin-bottom: 2em;
+}
+
+a {
+	text-decoration: none;
+	color: var(--link-color);
+}
+a:hover {
+	color: var(--link-hover-color);
+}
+div.dark {
+	background-color: var(--bg-secondary-color);
+	border-radius: var(--box-border-radius);
+}
+a div.dark:hover {
+	background-color: var(--bg-secondary-hover-color);
+}
+
+nav {
+	max-width: 50em;
+	background-color: var(--bg-secondary-color);
+	padding: var(--box-padding);
+	border-radius: 0 0 var(--box-border-radius) 0;
+}
+div.flex {
+	width: 100%;
+}
+nav, div.flex {
+	display: flex;
+	flex-wrap: wrap;
+	grid-row-gap: 0.5em;
+}
+nav > div.title {
+	font-weight: bold;
+}
+nav > div.spacer {
+	flex-basis: 10%;
+}
+div.flex > a, div.flex div {
+	flex-grow: 1;
+	flex-shrink: 0;
+}
+div.flex div {
+	padding: var(--box-padding);
+}
+div.flex .w-100 {
+	display: flex;
+	flex-basis: calc(100% - 2 * var(--box-padding));
+}
+div.flex .w-50 {
+	display: flex;
+	flex-basis: calc(50% - 2 * var(--box-padding));
+}
+div.right-bar {
+	float: right;
+	width: calc(33% - 2 * var(--box-padding));
+	margin-left: 1em;
+}
+div.video-container {
+	text-align: center;
+}
+
+div.video-container > iframe {
+	width: 66%;
+}
+
+
+.lessons .complete {
+	background-color: var(--complete-lesson-bg-color);
+}
+.lessons .complete:hover {
+	background-color: var(--complete-lesson-bg-hover-color);
+}
+.lessons .current, .lessons .current:hover {
+	background-color: var(--current-lesson-bg-color);
+}
+
+div.quiz div.question {
+	margin-bottom: 2.5em;
+}
+div.quiz .correct h3 {
+	color: var(--quiz-correct-color);
+}
+div.quiz .incorrect h3 {
+	color: var(--quiz-incorrect-color);
+}
+
+@media all and (orientation: portrait) {
+	nav {
+		width: calc(100% - 2 * var(--box-padding));
+	}
+	div.right-bar {
+		float: none;
+		width: 100%;
+		margin-left: 0;
+	}
+}
